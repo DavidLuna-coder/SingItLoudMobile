@@ -1,4 +1,4 @@
-package es.uca.singitloud.ui.gallery
+package es.uca.singitloud.ui.salas
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

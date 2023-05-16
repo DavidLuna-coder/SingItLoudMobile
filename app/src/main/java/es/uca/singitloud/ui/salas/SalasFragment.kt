@@ -1,4 +1,4 @@
-package es.uca.singitloud.ui.gallery
+package es.uca.singitloud.ui.salas
 
 import android.os.Bundle
 import android.view.LayoutInflater

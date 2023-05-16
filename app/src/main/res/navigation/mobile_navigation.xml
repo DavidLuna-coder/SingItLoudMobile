@@ -13,7 +13,7 @@
 
     <fragment
         android:id="@+id/nav_gallery"
-        android:name="es.uca.singitloud.ui.gallery.GalleryFragment"
+        android:name="es.uca.singitloud.ui.salas.GalleryFragment"
         android:label="@string/menu_gallery"
         tools:layout="@layout/fragment_gallery" />
 
