@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="es.uca.singitloud.ui.home.HomeFragment"
+        android:name="es.uca.singitloud.ui.reservas.ReservasFragment"
         android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_reservas" />
 
     <fragment
         android:id="@+id/nav_gallery"
-        android:name="es.uca.singitloud.ui.salas.GalleryFragment"
+        android:name="es.uca.singitloud.ui.salas.SalasFragment"
         android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        tools:layout="@layout/fragment_salas" />
 
     <fragment
         android:id="@+id/nav_slideshow"
-        android:name="es.uca.singitloud.ui.slideshow.SlideshowFragment"
+        android:name="es.uca.singitloud.ui.localizacion.LocalizacionFragment"
         android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        tools:layout="@layout/fragment_localizacion" />
 </navigation>

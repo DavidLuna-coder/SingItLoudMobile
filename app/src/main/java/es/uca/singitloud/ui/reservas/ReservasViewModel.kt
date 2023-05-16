@@ -1,13 +1,13 @@
-package es.uca.singitloud.ui.home
+package es.uca.singitloud.ui.reservas
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class HomeViewModel : ViewModel() {
+class ReservasViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is home Fragment"
+        value = "This is Reservas Fragment"
     }
     val text: LiveData<String> = _text
 }
