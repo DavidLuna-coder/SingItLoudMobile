@@ -1,6 +1,7 @@
 package es.uca.singitloud.ui.localizacion
 
 import android.os.Bundle
+import android.text.util.Linkify
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,16 +23,16 @@ class LocalizacionFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val slideshowViewModel =
-            ViewModelProvider(this).get(LocalizacionViewModel::class.java)
 
         _binding = FragmentLocalizacionBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textSlideshow
-        slideshowViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
+        val textView: TextView = binding.textLugar
+        textView.text = "Nuestro karaoke se encuentra en Puerto Real y dispone de varios metodos de transporte como es el tren, autobus o taxi. " +
+                "Para consultar los horarios de trenes acceda a: https://www.renfe.com/es/es"
+
+        Linkify.addLinks(textView, Linkify.WEB_URLS)
+
         return root
     }
 
