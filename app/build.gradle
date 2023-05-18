@@ -1,12 +1,16 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'org.jetbrains.kotlin.plugin.serialization' version '1.8.21'
 }
 
 android {
     namespace 'es.uca.singitloud'
     compileSdk 33
 
+    configurations.all {
+        resolutionStrategy.force('com.google.code.findbugs:jsr305:3.0.2')
+    }
     defaultConfig {
         applicationId "es.uca.singitloud"
         minSdk 33
@@ -45,9 +49,11 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1'
     implementation 'androidx.navigation:navigation-fragment-ktx:2.5.3'
     implementation 'androidx.navigation:navigation-ui-ktx:2.5.3'
-    implementation "io.ktor:ktor-client-android:1.6.5"
-    implementation "io.ktor:ktor-client-json-jvm:1.6.5"
-    implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.0"
+    implementation "io.ktor:ktor-client-android:2.3.0"
+    implementation "io.ktor:ktor-client-json-jvm:2.3.0"
+    implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1"
+    implementation "io.ktor:ktor-serialization-kotlinx-json:2.3.0"
+    implementation "io.ktor:ktor-client-content-negotiation:2.3.0"
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'

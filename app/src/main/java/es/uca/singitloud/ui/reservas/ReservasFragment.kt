@@ -1,20 +1,17 @@
 package es.uca.singitloud.ui.reservas
 
-import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import es.uca.singitloud.MainActivity
 import es.uca.singitloud.databinding.FragmentReservasBinding
+import es.uca.singitloud.utils.ApiService
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -65,16 +62,17 @@ class ReservasFragment : Fragment() {
         _binding = null
     }
 
-    private fun fetchBookings(): List<Reserva> {
+    suspend private fun fetchBookings(): List<Reserva>{
         Thread.sleep(2000)
-        var reservas = listOf(
-            Reserva("1312", UserModel("David","Luna"), "13:00", "14:00", "2023-04-13", 4, 	3),
-            Reserva("1352", UserModel("Laura","Guerrero"), "13:00", "14:00", "2023-04-13", 4, 	3),
-            Reserva("4432", UserModel("Alemale","Malayo"), "13:00", "14:00", "2023-04-13", 4, 	3),
-            Reserva("5532", UserModel("Juan","Perico"), "13:00", "14:00", "2023-04-13", 4, 	3),
-        )
+        /*var reservas = listOf(
+            Reserva("1312", UserModel("David","Luna"), "13:00", "14:00", "2023-04-13", "4", 	"3"),
+            Reserva("1352", UserModel("Laura","Guerrero"), "13:00", "14:00", "2023-04-13", "4", 	"3"),
+            Reserva("4432", UserModel("Alemale","Malayo"), "13:00", "14:00", "2023-04-13", "4", 	"3"),
+            Reserva("5532", UserModel("Juan","Perico"), "13:00", "14:00", "2023-04-13", "4", 	"3"),
+        )*/
         Log.d("FETCH", "Función ejecutada");
-
+        val service = ApiService()
+        var reservas = service.getReservas()
         return reservas
     }
 }
