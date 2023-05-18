@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+            <TextView
+                android:id="@+id/reserva_text_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Id" />
+
+            <TextView
+                android:id="@+id/reserva_text_full_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nombre"
+                android:layout_below="@id/reserva_text_id"
+                />
+            <TextView
+                android:id="@+id/reserva_text_start_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/reserva_text_full_name"
+                android:text="StartTime"/>
+
+            <TextView
+                android:id="@+id/reserva_text_end_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/reserva_text_full_name"
+                android:layout_marginLeft="10dp"
+                android:layout_toEndOf="@+id/reserva_text_start_time"
+                android:text="EndTime" />
+
+            <TextView
+                android:id="@+id/reserva_text_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Date"
+                android:layout_below="@id/reserva_text_end_time"
+                />
+            <TextView
+                android:id="@+id/reserva_text_number_of_people"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Number of People"
+                android:layout_alignParentRight="true"
+                />
+            <TextView
+                android:id="@+id/reserva_text_room"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/reserva_text_start_time"
+                android:layout_alignRight="@+id/reserva_text_date"
+                android:text="Room"
+                />
+
+        </RelativeLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
