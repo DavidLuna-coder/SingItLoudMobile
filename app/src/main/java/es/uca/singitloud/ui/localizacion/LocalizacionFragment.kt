@@ -2,6 +2,7 @@ package es.uca.singitloud.ui.localizacion
 
 import android.os.Bundle
 import android.text.util.Linkify
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -40,15 +41,24 @@ class LocalizacionFragment : Fragment(), OnMapReadyCallback {
 
         Linkify.addLinks(textView, Linkify.WEB_URLS)
 
-        val mapFragment =
-            childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
-        mapFragment?.getMapAsync(this)
+        try{
+            val mapFragment =
+                childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
+            mapFragment?.getMapAsync(this)
+        }catch (ex:Exception){
+            Log.e("Error localizacion",ex.message.toString())
+        }
         return root
     }
 
     private fun createFragment(){
-        val mapFragment: SupportMapFragment = requireActivity().supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
-        mapFragment.getMapAsync(this)
+        try{
+            val mapFragment: SupportMapFragment = requireActivity().supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
+            mapFragment.getMapAsync(this)
+        }catch (ex:Exception){
+            Log.e("Error localizacion",ex.message.toString())
+        }
+
     }
     override fun onDestroyView() {
         super.onDestroyView()
