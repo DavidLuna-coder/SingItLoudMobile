@@ -34,31 +34,29 @@ class LocalizacionFragment : Fragment(), OnMapReadyCallback {
 
         _binding = FragmentLocalizacionBinding.inflate(inflater, container, false)
         val root: View = binding.root
+        try {
 
-        val textView: TextView = binding.textLugar
-        textView.text = "Nuestro karaoke se encuentra en Puerto Real y dispone de varios metodos de transporte como es el tren, autobus o taxi. " +
-                "Para consultar los horarios de trenes acceda a: https://www.renfe.com/es/es"
 
-        Linkify.addLinks(textView, Linkify.WEB_URLS)
+            val textView: TextView = binding.textLugar
+            textView.text =
+                "Nuestro karaoke se encuentra en Puerto Real y dispone de varios metodos de transporte como es el tren, autobus o taxi. " +
+                        "Para consultar los horarios de trenes acceda a: https://www.renfe.com/es/es"
 
-        try{
+            Linkify.addLinks(textView, Linkify.WEB_URLS)
+
             val mapFragment =
                 childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
             mapFragment?.getMapAsync(this)
-        }catch (ex:Exception){
-            Log.e("Error localizacion",ex.message.toString())
+        }
+        catch (ex:Exception){
+            Log.e("ERROR MAP", "onCreateView: ${ex.message}", )
         }
         return root
     }
 
     private fun createFragment(){
-        try{
-            val mapFragment: SupportMapFragment = requireActivity().supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
-            mapFragment.getMapAsync(this)
-        }catch (ex:Exception){
-            Log.e("Error localizacion",ex.message.toString())
-        }
-
+        val mapFragment: SupportMapFragment = requireActivity().supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
+        mapFragment.getMapAsync(this)
     }
     override fun onDestroyView() {
         super.onDestroyView()
