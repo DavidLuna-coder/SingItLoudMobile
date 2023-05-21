@@ -79,6 +79,17 @@
                 />
 
                 <Button
+                    android:id="@+id/reserva_button_edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/reserva_text_room"
+                    android:layout_marginRight="30dp"
+                    android:layout_toStartOf="@+id/reserva_button_eliminar"
+                    android:backgroundTint="#786767"
+                    android:text="Editar" />
+
+                />
+                <Button
                     android:id="@+id/reserva_button_eliminar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

@@ -13,6 +13,7 @@ import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.request.delete
 import io.ktor.client.request.get
 import io.ktor.client.request.post
+import io.ktor.client.request.put
 import io.ktor.client.request.setBody
 import io.ktor.client.statement.HttpResponse
 import io.ktor.client.utils.EmptyContent.contentType
@@ -75,4 +76,19 @@ class ApiService (private val appContext:Context){
         }
     }
 
+    suspend fun putReserva(reserva:ReservaRequestModel, id:String) : Boolean{
+        val ip = appContext.getString(R.string.ip_address)
+        val port = appContext.getString(R.string.server_port)
+        return try {
+            val response: HttpResponse = client.put("http://${ip}:${port}/bookings/${id}") {
+                contentType(
+                    ContentType.Application.Json)
+                setBody(reserva)
+            }
+            true
+        } catch (ex:Exception){
+            Log.e("FATAL ERROR", "postReserva: Error al hacer la reserva ${ex.message}")
+            false
+        }
+    }
 }

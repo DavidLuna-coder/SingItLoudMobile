@@ -2,6 +2,7 @@ package es.uca.singitloud.ui.reservas
 
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +13,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import es.uca.singitloud.R
+import es.uca.singitloud.UpdateFormActivity
 import es.uca.singitloud.utils.ApiService
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -31,6 +33,7 @@ class ReservaAdapter (private val reservas:List<Reserva>, private val recyclerVi
         val verMasButton : Button = itemView.findViewById(R.id.reserva_button_ver_mas)
         val extraFields : RelativeLayout = itemView.findViewById(R.id.reserva_relative_2)
         val deleteButton : Button = itemView.findViewById(R.id.reserva_button_eliminar)
+        val editButton : Button = itemView.findViewById(R.id.reserva_button_edit)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReservaViewHolder {
@@ -60,6 +63,20 @@ class ReservaAdapter (private val reservas:List<Reserva>, private val recyclerVi
                 holder.extraFields.visibility = View.GONE
                 holder.verMasButton.text = "Ver Más"
             }
+        }
+
+        holder.editButton.setOnClickListener{
+            val context = holder.itemView.context
+            val intent = Intent(context, UpdateFormActivity::class.java)
+            intent.putExtra("id", currentReserva._id)
+            intent.putExtra("name", currentReserva.user.name)
+            intent.putExtra("apellido", currentReserva.user.lastName)
+            intent.putExtra("fecha", currentReserva.date)
+            intent.putExtra("horaInicio", currentReserva.startTime)
+            intent.putExtra("horaFin",currentReserva.endTime)
+            intent.putExtra("numPersonas", currentReserva.numberOfPeople)
+            intent.putExtra("numSala", currentReserva.room)
+            context.startActivity(intent)
         }
 
         holder.deleteButton.setOnClickListener {

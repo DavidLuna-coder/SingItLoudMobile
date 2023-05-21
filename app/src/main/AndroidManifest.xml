@@ -18,6 +18,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".UpdateFormActivity"
+            android:exported="false" />
+        <activity
             android:name=".FormActivity"
             android:exported="false" />
 
