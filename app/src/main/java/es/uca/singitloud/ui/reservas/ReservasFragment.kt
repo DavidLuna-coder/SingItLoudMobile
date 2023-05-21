@@ -1,5 +1,7 @@
 package es.uca.singitloud.ui.reservas
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -10,6 +12,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import es.uca.singitloud.FormActivity
+import es.uca.singitloud.MainActivity
 import es.uca.singitloud.databinding.FragmentReservasBinding
 import es.uca.singitloud.utils.ApiService
 import kotlinx.coroutines.Dispatchers
@@ -35,11 +39,16 @@ class ReservasFragment : Fragment() {
 
         _binding = FragmentReservasBinding.inflate(inflater, container, false)
         val root: View = binding.root
+        val addReserva = binding.buttonAAdirReserva
+        try {
 
-        val textView: TextView = binding.textHome
+            addReserva.setOnClickListener {
+                val intent = Intent(activity, FormActivity::class.java)
+                startActivity(intent)
+            }
 
-        homeViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
+        }catch (ex:Exception){
+            Log.e("TEST", "onCreateView: ${ex.message}", )
         }
 
         var reservas : List<Reserva>
@@ -48,8 +57,8 @@ class ReservasFragment : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(context)
 
         GlobalScope.launch(Dispatchers.IO) {
-            reservas = fetchBookings()
-            val adapter = ReservaAdapter(reservas)
+            reservas = fetchBookings(context)
+            val adapter = ReservaAdapter(reservas, recyclerView)
             withContext(Dispatchers.Main){
                 recyclerView.adapter = adapter
             }
@@ -62,7 +71,7 @@ class ReservasFragment : Fragment() {
         _binding = null
     }
 
-    suspend private fun fetchBookings(): List<Reserva>{
+    suspend private fun fetchBookings(context: Context): List<Reserva>{
         Thread.sleep(2000)
         /*var reservas = listOf(
             Reserva("1312", UserModel("David","Luna"), "13:00", "14:00", "2023-04-13", "4", 	"3"),
@@ -71,7 +80,7 @@ class ReservasFragment : Fragment() {
             Reserva("5532", UserModel("Juan","Perico"), "13:00", "14:00", "2023-04-13", "4", 	"3"),
         )*/
         Log.d("FETCH", "Función ejecutada");
-        val service = ApiService()
+        val service = ApiService(context)
         var reservas = service.getReservas()
         return reservas
     }

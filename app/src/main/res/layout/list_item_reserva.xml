@@ -16,6 +16,7 @@
 
         <RelativeLayout
             android:layout_width="wrap_content"
+            android:id="@+id/reserva_relative_1"
             android:layout_height="wrap_content"
             android:padding="16dp">
             <TextView
@@ -31,18 +32,24 @@
                 android:text="Nombre"
                 android:layout_below="@id/reserva_text_id"
                 />
+
+            <RelativeLayout
+                android:id="@+id/reserva_relative_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/reserva_text_full_name"
+                android:visibility="gone">
+
             <TextView
                 android:id="@+id/reserva_text_start_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/reserva_text_full_name"
                 android:text="StartTime"/>
 
             <TextView
                 android:id="@+id/reserva_text_end_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/reserva_text_full_name"
                 android:layout_marginLeft="10dp"
                 android:layout_toEndOf="@+id/reserva_text_start_time"
                 android:text="EndTime" />
@@ -71,6 +78,23 @@
                 android:text="Room"
                 />
 
+                <Button
+                    android:id="@+id/reserva_button_eliminar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/reserva_text_room"
+                    android:layout_alignParentEnd="true"
+                    android:backgroundTint="#C61C1C"
+                    android:text="Eliminar" />
+
+        </RelativeLayout>
+            <Button
+                android:id="@+id/reserva_button_ver_mas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ver más"
+                android:layout_below="@id/reserva_relative_2"
+                android:backgroundTint="@color/cardview_dark_background" />
         </RelativeLayout>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

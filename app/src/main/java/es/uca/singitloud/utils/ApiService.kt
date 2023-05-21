@@ -1,18 +1,28 @@
 package es.uca.singitloud.utils
 
+import android.content.Context
+import android.content.res.Resources
 import android.util.Log
+import com.google.android.material.snackbar.Snackbar
+import es.uca.singitloud.R
 import es.uca.singitloud.ui.reservas.Reserva
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.engine.android.Android
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
+import io.ktor.client.request.delete
 import io.ktor.client.request.get
+import io.ktor.client.request.post
+import io.ktor.client.request.setBody
 import io.ktor.client.statement.HttpResponse
+import io.ktor.client.utils.EmptyContent.contentType
+import io.ktor.http.ContentType
+import io.ktor.http.contentType
 import io.ktor.serialization.kotlinx.json.json
-import java.lang.Exception
+import kotlin.Exception
 
 
-class ApiService {
+class ApiService (private val appContext:Context){
     private val client = HttpClient(Android){
         install(ContentNegotiation){
             json()
@@ -21,8 +31,11 @@ class ApiService {
 
     suspend fun getReservas():List<Reserva>{
         Log.d("FETCH", "PRUEBA")
+        val ip = appContext.getString(R.string.ip_address)
+        val port = appContext.getString(R.string.server_port)
         try {
-            val response: HttpResponse = client.get("http://192.168.0.7:3000/bookings")
+            Log.d("TEST", "${ip}")
+            val response: HttpResponse = client.get("http://${ip}:${port}/bookings")
             Log.d("PETICION", "getCall: ${response.status.toString()}")
             Log.d("LOG GETCALL", response.body())
             val reservas : List<Reserva> = response.body()
@@ -33,4 +46,33 @@ class ApiService {
             return emptyList()
         }
     }
+
+    suspend fun deleteReserva (id : String):Boolean{
+        val ip = appContext.getString(R.string.ip_address)
+        val port = appContext.getString(R.string.server_port)
+        return try {
+            client.delete("http://${ip}:${port}/bookings/${id}")
+            true
+        } catch (ex:Exception) {
+            Log.e("NETWORK ERROR", "deleteReserva: ${ex.message}" )
+            false
+        }
+    }
+
+    suspend fun postReserva(reserva:ReservaRequestModel) : Boolean{
+        val ip = appContext.getString(R.string.ip_address)
+        val port = appContext.getString(R.string.server_port)
+        return try {
+            val response: HttpResponse = client.post("http://${ip}:${port}/bookings") {
+                contentType(
+                    ContentType.Application.Json)
+                setBody(reserva)
+            }
+            true
+        } catch (ex:Exception){
+            Log.e("FATAL ERROR", "postReserva: Error al hacer la reserva ${ex.message}")
+            false
+        }
+    }
+
 }
