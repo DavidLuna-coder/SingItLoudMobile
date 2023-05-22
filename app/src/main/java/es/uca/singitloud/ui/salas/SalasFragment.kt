@@ -33,12 +33,12 @@ class SalasFragment : Fragment() {
         val root: View = binding.root
 
         val salas = listOf<Sala>(
-            Sala("Sala 1", R.mipmap.imagen_sala1, "3", "4", "No"),
-            Sala("Sala 2", R.mipmap.imagen_sala2, "4", "4", "Si"),
-            Sala("Sala 3", R.mipmap.imagen_sala3, "4", "5", "No"),
-            Sala("Sala 4", R.mipmap.imagen_sala4, "5", "5", "Si"),
-            Sala("Sala 5", R.mipmap.imagen_sala5, "5", "6", "Si"),
-            Sala("Sala 6", R.mipmap.imagen_sala6, "6", "7", "Si")
+            Sala("Sala 1", R.mipmap.imagen_sala1,"Sala 1 es una sala de karaoke con capacidad de hasta 3 personas. Dispone de 2 micrófonos y una pantalla de 50 pulgadas. Excelente para disfrutar del karaoke con un grupo reducido de personas.","3", "4", "No"),
+            Sala("Sala 2", R.mipmap.imagen_sala2,"Sala 2 es una sala de karaoke con capacidad de hasta 5 personas. Dispone de 4 micrófonos y una pantalla de 50 pulgadas. Excelente para disfrutar del karaoke por un precio reducido.", "4", "4", "Si"),
+            Sala("Sala 3", R.mipmap.imagen_sala3,"Sala 3 es una sala de karaoke con capacidad de hasta 6 personas. Dispone de 6 micrófonos y una pantalla de 50 pulgadas. Excelente para disfrutar del karaoke con un grupo de personas que quiera disfrutar de una experiencia única sentados en el sofá.", "4", "5", "No"),
+            Sala("Sala 4", R.mipmap.imagen_sala4, "Sala 4 es una sala de karaoke con capacidad de hasta 6 personas. Dispone de 6 micrófonos y una pantalla de 50 pulgadas. Excelente para disfrutar del karaoke con un grupo de personas que quiera disfrutar del karaoke con la máxima comodidad.","5", "5", "Si"),
+            Sala("Sala 5", R.mipmap.imagen_sala5,"Sala 5 es una sala de karaoke con capacidad de hasta 7 personas. Dispone de 6 micrófonos y una pantalla de 50 pulgadas. Excelente para disfrutar del karaoke con un grupo de personas que quiera disfrutar de una experiencia única sentados en el sofá y con servicio de bar.", "5", "6", "Si"),
+            Sala("Sala 6", R.mipmap.imagen_sala6,"Sala 6 es una sala de karaoke con capacidad de hasta 7 personas. Dispone de 7 micrófonos y una pantalla de 50 pulgadas. Excelente para disfrutar del karaoke con un grupo de personas que quiera disfrutar de una experiencia única sentados en el sofá y con servicio de bar. Ideal para celebrar fiestas", "6", "7", "Si")
         )
 
         val recyclerView: RecyclerView = binding.recyclerView

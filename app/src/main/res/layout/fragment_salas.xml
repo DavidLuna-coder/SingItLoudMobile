@@ -11,4 +11,10 @@
         android:layout_height="match_parent"
         android:id="@+id/recyclerView" />
 
+    <Button
+        android:id="@+id/descargarPdfButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Descargar PDF"
+        app:layout_constraintBottom_toBottomOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
