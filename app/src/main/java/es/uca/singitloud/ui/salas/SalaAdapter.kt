@@ -17,6 +17,7 @@ import android.graphics.drawable.LayerDrawable
 import android.media.MediaScannerConnection
 import android.os.Environment
 import android.util.Log
+import android.view.Gravity
 import android.widget.Toast
 import com.itextpdf.kernel.pdf.PdfDocument
 import com.itextpdf.kernel.pdf.PdfWriter
@@ -63,8 +64,8 @@ class SalaAdapter(private val salas: List<Sala>) :
         tableLayout.removeAllViews()
 
         val encabezadosRow = TableRow(context)
-        encabezadosRow.addView(createTableCell("Numero de micrófonos"))
-        encabezadosRow.addView(createTableCell("Numero de personas"))
+        encabezadosRow.addView(createTableCell("Micrófonos"))
+        encabezadosRow.addView(createTableCell("Personas"))
         encabezadosRow.addView(createTableCell("Dispone de sofá"))
         tableLayout.addView(encabezadosRow)
 
@@ -78,11 +79,14 @@ class SalaAdapter(private val salas: List<Sala>) :
         val backgroundDrawable = arrayOf(dividerDrawable)
         val layerDrawable = LayerDrawable(backgroundDrawable)
         encabezadosRow.background = layerDrawable
+        datosRow.background = layerDrawable
     }
 
     private fun createTableCell(text: String): TextView {
         val cell = TextView(context)
         cell.text = text
+        cell.gravity = Gravity.CENTER
+        cell.layoutParams = TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 1f)
         return cell
     }
 

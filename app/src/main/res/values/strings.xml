@@ -10,7 +10,7 @@
     <string name="menu_home">Reservas</string>
     <string name="menu_gallery">Salas</string>
     <string name="menu_slideshow">Localizacion</string>
-    <string name="ip_address">192.168.0.7</string>
+    <string name="ip_address">192.168.1.226</string>
     <string name="server_port">3000</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

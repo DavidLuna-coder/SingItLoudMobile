@@ -14,7 +14,8 @@
         <TextView
             android:id="@+id/nombreSala"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textSize="20dp" />
 
         <ImageView
             android:id="@+id/image"
@@ -24,14 +25,14 @@
         <TextView
             android:id="@+id/descripcion"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:gravity="center"/>
 
         <TableLayout
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/tabla"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:divider="@drawable/divider">
+            android:layout_height="wrap_content">
 
             <TableRow
                 android:layout_width="match_parent"
@@ -42,6 +43,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
+                    android:textSize="20dp"
                     android:background="@drawable/divider"/>
                 <TextView
                     android:layout_width="wrap_content"
