@@ -9,4 +9,8 @@
         <item name="android:background">?android:attr/colorBackground</item>
         <item name="android:textColor">?android:attr/textColorPrimary</item>
     </style>
+    
+     <style name="FragmentStyle">
+        <item name="android:background">@color/fondo_fragment</item>
+    </style>
 </resources>
