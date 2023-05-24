@@ -81,7 +81,6 @@ class ReservasFragment : Fragment() {
     }
 
     suspend private fun fetchBookings(context: Context): List<Reserva>{
-        Thread.sleep(2000)
         /*var reservas = listOf(
             Reserva("1312", UserModel("David","Luna"), "13:00", "14:00", "2023-04-13", "4", 	"3"),
             Reserva("1352", UserModel("Laura","Guerrero"), "13:00", "14:00", "2023-04-13", "4", 	"3"),
