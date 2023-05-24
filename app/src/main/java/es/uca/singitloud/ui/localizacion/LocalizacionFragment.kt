@@ -40,7 +40,8 @@ class LocalizacionFragment : Fragment(), OnMapReadyCallback {
             val textView: TextView = binding.textLugar
             textView.text =
                 "Nuestro karaoke se encuentra en Puerto Real y dispone de varios metodos de transporte como es el tren, autobus o taxi. " +
-                        "Para consultar los horarios de trenes acceda a: https://www.renfe.com/es/es"
+                        "Para consultar los horarios de trenes acceda a: " +
+                        "https://www.renfe.com/es/es"
 
             Linkify.addLinks(textView, Linkify.WEB_URLS)
 

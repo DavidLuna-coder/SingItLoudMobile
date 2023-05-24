@@ -8,6 +8,6 @@
         android:id="@+id/appwidget_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/logo_app_widget" />
+        android:src="@mipmap/logo_app_widget" />
 
 </RelativeLayout>
