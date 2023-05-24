@@ -39,6 +39,8 @@ class ReservasFragment : Fragment() {
         _binding = FragmentReservasBinding.inflate(inflater, container, false)
         val root: View = binding.root
         val addReserva = binding.buttonAAdirReserva
+        val spinner = binding.reservasSpinner
+        val errorText = binding.reservasErrorText
         try {
 
             addReserva.setOnClickListener {
@@ -57,9 +59,16 @@ class ReservasFragment : Fragment() {
 
         GlobalScope.launch(Dispatchers.IO) {
             reservas = fetchBookings(context)
+
             val adapter = ReservaAdapter(reservas, recyclerView)
             withContext(Dispatchers.Main){
                 recyclerView.adapter = adapter
+                spinner.visibility = View.GONE
+                if(!reservas.isEmpty()){
+                    recyclerView.visibility=View.VISIBLE
+                }else{
+                    errorText.visibility = View.VISIBLE
+                }
             }
         }
         return root
@@ -71,7 +80,6 @@ class ReservasFragment : Fragment() {
     }
 
     suspend private fun fetchBookings(context: Context): List<Reserva>{
-        Thread.sleep(2000)
         /*var reservas = listOf(
             Reserva("1312", UserModel("David","Luna"), "13:00", "14:00", "2023-04-13", "4", 	"3"),
             Reserva("1352", UserModel("Laura","Guerrero"), "13:00", "14:00", "2023-04-13", "4", 	"3"),
