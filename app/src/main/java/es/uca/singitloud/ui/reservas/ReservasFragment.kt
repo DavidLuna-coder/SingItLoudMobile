@@ -40,6 +40,8 @@ class ReservasFragment : Fragment() {
         _binding = FragmentReservasBinding.inflate(inflater, container, false)
         val root: View = binding.root
         val addReserva = binding.buttonAAdirReserva
+        val spinner = binding.reservasSpinner
+        val errorText = binding.reservasErrorText
         try {
 
             addReserva.setOnClickListener {
@@ -58,9 +60,16 @@ class ReservasFragment : Fragment() {
 
         GlobalScope.launch(Dispatchers.IO) {
             reservas = fetchBookings(context)
+
             val adapter = ReservaAdapter(reservas, recyclerView)
             withContext(Dispatchers.Main){
                 recyclerView.adapter = adapter
+                spinner.visibility = View.GONE
+                if(!reservas.isEmpty()){
+                    recyclerView.visibility=View.VISIBLE
+                }else{
+                    errorText.visibility = View.VISIBLE
+                }
             }
         }
         return root
